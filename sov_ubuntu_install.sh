@@ -57,8 +57,8 @@ function remove_old_files() {
 	sudo rm -rf /root/sov
 	sudo rm -rf /root/.sov
 	sudo rm -rf /root/.sovcore
-    sudo rm -rf sovd
-    sudo rm -rf sov-cli
+    	sudo rm -rf sovd
+    	sudo rm -rf sov-cli
 	echo "Done..."
 }
 
@@ -66,12 +66,12 @@ function remove_old_files() {
 function download_wallet() {
 	echo "Downloading wallet..."
 	mkdir /root/sov
-    cd sov
+    	cd sov
 	mkdir /root/.sovcore
 	wget WWW.ENTER.COM/CLI_FILE_PLEASE
-    wget WWW.ENTER.COM/DAEMON_FILE_PLEASE
-    chmod +x sovd
-    chmod +x sov-cli
+    	wget WWW.ENTER.COM/DAEMON_FILE_PLEASE
+    	chmod +x sovd
+    	chmod +x sov-cli
 	echo "Done..."
 }
 
@@ -129,13 +129,13 @@ function addnodes() {
 	echo "Adding nodes..."
 	conffile=/root/.sovcore/sov.conf
 	echo -e "\naddnode=GIVEMEADDNODES
-			addnode=GIVEMEADDNODES
-			addnode=GIVEMEADDNODES
-			addnode=GIVEMEADDNODES
-			addnode=GIVEMEADDNODES
-			addnode=GIVEMEADDNODES
-			addnode=GIVEMEADDNODES
-			addnode=GIVEMEADDNODES\n" 		>> ${conffile}
+	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
+	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
+	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
+	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
+	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
+	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
+	echo -e "addnode=GIVEMEADDNODES\n" 		>> ${conffile}
 	echo "Done..."
 }
 
