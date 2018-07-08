@@ -71,10 +71,7 @@ function download_wallet() {
 	mkdir /root/.sovcore
 	wget https://github.com/SovCoinX/SOV-Wallets-Daemon/raw/master/Linux-Daemon.zip
 	7z x Linux-Daemon.zip
-	cp sovd /root/sov/sovd
-	cp sov-cli /root/sov/sov-cli
-	rm sovd
-    rm sov-cli
+	rm /root/sov/Linux-Daemon.zip
 	chmod +x /root/sov/
 	chmod +x /root/sov/sovd
 	chmod +x /root/sov/sov-cli
@@ -230,4 +227,4 @@ show_result
 cleanup
 echo "All done!"
 cd ~/
-sudo rm /root/sov_ubuntu_install.sh
+sudo rm /root/sovcoin_unofficial.sh
