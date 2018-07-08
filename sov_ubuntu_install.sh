@@ -1,6 +1,6 @@
 # sovcoin masternode install script
 # Edited by Robbowz
-VERSION="0.1"
+VERSION="0.2"
 NODEPORT='11888'
 RPCPORT='3322'
 
@@ -30,7 +30,7 @@ function install_packages() {
 	echo "Install packages..."
 	add-apt-repository -yu ppa:bitcoin/bitcoin  &>> ${SCRIPT_LOGFILE}
 	apt-get -y update &>> ${SCRIPT_LOGFILE}
-    sudo apt-get install p7zip-full &>> ${SCRIPT_LOGFILE}
+  	sudo apt-get install p7zip-full &>> ${SCRIPT_LOGFILE}
 	apt-get -y install wget make automake autoconf build-essential libtool autotools-dev \
 	git nano python-virtualenv pwgen virtualenv \
 	pkg-config libssl-dev libevent-dev bsdmainutils software-properties-common \
@@ -58,8 +58,8 @@ function remove_old_files() {
 	sudo rm -rf /root/sov
 	sudo rm -rf /root/.sov
 	sudo rm -rf /root/.sovcore
-    sudo rm -rf sovd
-    sudo rm -rf sov-cli
+    	sudo rm -rf sovd
+    	sudo rm -rf sov-cli
 	echo "Done..."
 }
 
@@ -67,7 +67,7 @@ function remove_old_files() {
 function download_wallet() {
 	echo "Downloading wallet..."
 	mkdir /root/sov
-    cd sov
+    	cd sov
 	mkdir /root/.sovcore
 	wget https://github.com/SovCoinX/SOV-Wallets-Daemon/raw/master/Linux-Daemon.zip
 	7z x Linux-Daemon.zip
