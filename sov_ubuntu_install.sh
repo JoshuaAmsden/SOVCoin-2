@@ -227,4 +227,4 @@ show_result
 cleanup
 echo "All done!"
 cd ~/
-sudo rm /root/sovcoin_unofficial.sh
+sudo rm /root/sov_ubuntu_install.sh
