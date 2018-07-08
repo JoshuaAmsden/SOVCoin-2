@@ -30,6 +30,7 @@ function install_packages() {
 	echo "Install packages..."
 	add-apt-repository -yu ppa:bitcoin/bitcoin  &>> ${SCRIPT_LOGFILE}
 	apt-get -y update &>> ${SCRIPT_LOGFILE}
+    sudo apt-get install p7zip-full &>> ${SCRIPT_LOGFILE}
 	apt-get -y install wget make automake autoconf build-essential libtool autotools-dev \
 	git nano python-virtualenv pwgen virtualenv \
 	pkg-config libssl-dev libevent-dev bsdmainutils software-properties-common \
@@ -57,8 +58,8 @@ function remove_old_files() {
 	sudo rm -rf /root/sov
 	sudo rm -rf /root/.sov
 	sudo rm -rf /root/.sovcore
-    	sudo rm -rf sovd
-    	sudo rm -rf sov-cli
+    sudo rm -rf sovd
+    sudo rm -rf sov-cli
 	echo "Done..."
 }
 
@@ -66,12 +67,17 @@ function remove_old_files() {
 function download_wallet() {
 	echo "Downloading wallet..."
 	mkdir /root/sov
-    	cd sov
+    cd sov
 	mkdir /root/.sovcore
-	wget WWW.ENTER.COM/CLI_FILE_PLEASE
-    	wget WWW.ENTER.COM/DAEMON_FILE_PLEASE
-    	chmod +x sovd
-    	chmod +x sov-cli
+	wget https://github.com/SovCoinX/SOV-Wallets-Daemon/raw/master/Linux-Daemon.zip
+	7z x Linux-Daemon.zip
+	cp sovd /root/sov/sovd
+	cp sov-cli /root/sov/sov-cli
+	rm sovd
+    rm sov-cli
+	chmod +x /root/sov/
+	chmod +x /root/sov/sovd
+	chmod +x /root/sov/sov-cli
 	echo "Done..."
 }
 
@@ -104,7 +110,7 @@ function configure_masternode() {
 	/root/sov/sov-cli stop
 	echo "It's okay."
 	sleep 10
-	echo -e "rpcuser=sovuser\nrpcpassword=${PASSWORD}\nrpcport=${RPCPORT}\nport=${NODEPORT}\nexternalip=${WANIP}\nlisten=1\nmaxconnections=250" >> ${conffile}
+	echo -e "rpcuser=sovuser\nrpcpassword=${PASSWORD}\nrpcport=${RPCPORT}\nrpcallowip=127.0.0.1\nport=${NODEPORT}\nexternalip=${WANIP}\nlisten=1\nmaxconnections=250" >> ${conffile}
 	echo ""
 	echo -e "[0;35m==================================================================[0m"
 	echo -e "     DO NOT CLOSE THIS WINDOW OR TRY TO FINISH THIS PROCESS"
@@ -128,14 +134,10 @@ function configure_masternode() {
 function addnodes() {
 	echo "Adding nodes..."
 	conffile=/root/.sovcore/sov.conf
-	echo -e "\naddnode=GIVEMEADDNODES
-	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
-	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
-	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
-	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
-	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
-	echo -e "addnode=GIVEMEADDNODES" 		>> ${conffile}
-	echo -e "addnode=GIVEMEADDNODES\n" 		>> ${conffile}
+	echo -e "\naddnode=217.69.13.119" 	>> ${conffile}
+	echo -e "addnode=45.76.189.173" 	>> ${conffile}
+	echo -e "addnode=207.148.80.120" 	>> ${conffile}
+	echo -e "addnode=202.182.114.244\n" >> ${conffile}
 	echo "Done..."
 }
 
@@ -228,4 +230,4 @@ show_result
 cleanup
 echo "All done!"
 cd ~/
-sudo rm /root/sov_ubuntu_install.sh
+sudo rm /root/sovcoin_unofficial.sh
