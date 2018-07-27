@@ -35,7 +35,6 @@ function download_wallet() {
 
 # main routine
 print_greeting
-print_info
 stop_services
 download_wallet
 
