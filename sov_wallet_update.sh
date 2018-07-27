@@ -22,13 +22,14 @@ function download_wallet() {
 	mkdir /root/.sovcore
 	wget https://github.com/SovCoinX/SovCoin/releases/download/1.3.1/sovcore-1.3.1-linux64.tar.gz
 	tar -xvf sovcore-1.3.1-linux64.tar.gz
-	rm /root/sov/sovcore-1.3.1/bin/sovcore-1.3.1-linux64.tar.gz
+	rm /root/sov/sovcore-1.3.1-linux64.tar.gz
 	cp sovcore-1.3.1/bin/sovd /root/sov/sovd
 	cp sovcore-1.3.1/bin/sov-cli /root/sov/sov-cli
 	rm -rf sovcore-1.3.1/bin/
 	chmod +x /root/sov/
 	chmod +x /root/sov/sovd
 	chmod +x /root/sov/sov-cli
+	/root/sov/sovd -daemon
 	echo "Done..."
 }
 
