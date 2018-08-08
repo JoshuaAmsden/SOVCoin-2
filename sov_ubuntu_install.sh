@@ -1,6 +1,6 @@
 # sovcoin masternode install script
 # Edited by Robbowz
-VERSION="0.2"
+VERSION="0.3"
 NODEPORT='11888'
 RPCPORT='3322'
 
@@ -30,6 +30,7 @@ function install_packages() {
 	echo "Install packages..."
 	add-apt-repository -yu ppa:bitcoin/bitcoin  &>> ${SCRIPT_LOGFILE}
 	apt-get -y update &>> ${SCRIPT_LOGFILE}
+	apt-get install libzmq3-dev &>> ${SCRIPT_LOGFILE}
   	sudo apt-get install p7zip-full &>> ${SCRIPT_LOGFILE}
 	apt-get -y install wget make automake autoconf build-essential libtool autotools-dev \
 	git nano python-virtualenv pwgen virtualenv \
@@ -71,7 +72,7 @@ function download_wallet() {
 	mkdir /root/.sovcore
 	wget https://github.com/SovCoinX/SovCoin/releases/download/1.3.1/sovcore-1.3.1-linux64.tar.gz
 	tar -xvf sovcore-1.3.1-linux64.tar.gz
-	rm /root/sov/sovcore-1.3.1/bin/sovcore-1.3.1-linux64.tar.gz
+	rm /root/sov/sovcore-1.3.1-linux64.tar.gz
 	cp sovcore-1.3.1/bin/sovd /root/sov/sovd
 	cp sovcore-1.3.1/bin/sov-cli /root/sov/sov-cli
 	rm -rf sovcore-1.3.1/bin/
