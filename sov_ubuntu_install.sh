@@ -27,6 +27,8 @@ function print_info() {
 
 
 function install_packages() {
+	su root 
+	cd ~
 	echo "Install packages..."
 	add-apt-repository -yu ppa:bitcoin/bitcoin  &>> ${SCRIPT_LOGFILE}
 	apt-get -y update &>> ${SCRIPT_LOGFILE}
