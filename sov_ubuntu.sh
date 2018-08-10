@@ -1,6 +1,6 @@
 # sovcoin masternode install script
 # Edited by Robbowz
-VERSION="0.4"
+VERSION="0.5"
 NODEPORT='11888'
 RPCPORT='3322'
 
