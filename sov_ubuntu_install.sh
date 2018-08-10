@@ -27,17 +27,16 @@ function print_info() {
 
 
 function install_packages() {
-	su root 
 	cd ~
 	echo "Install packages..."
-	add-apt-repository -yu ppa:bitcoin/bitcoin  &>> ${SCRIPT_LOGFILE}
-	apt-get -y update &>> ${SCRIPT_LOGFILE}
-	apt-get install libzmq3-dev &>> ${SCRIPT_LOGFILE}
+	sudo add-apt-repository -yu ppa:bitcoin/bitcoin  &>> ${SCRIPT_LOGFILE}
+	sudo apt-get -y update &>> ${SCRIPT_LOGFILE}
+	sudo apt-get install libzmq3-dev &>> ${SCRIPT_LOGFILE}
   	sudo apt-get install p7zip-full &>> ${SCRIPT_LOGFILE}
-	apt-get -y install wget make automake autoconf build-essential libtool autotools-dev \
-	git nano python-virtualenv pwgen virtualenv \
-	pkg-config libssl-dev libevent-dev bsdmainutils software-properties-common \
-	libboost-all-dev libminiupnpc-dev libdb4.8-dev libdb4.8++-dev &>> ${SCRIPT_LOGFILE}
+	sudo apt-get -y install wget make automake autoconf build-essential libtool autotools-dev \
+	sudo git nano python-virtualenv pwgen virtualenv \
+	sudo pkg-config libssl-dev libevent-dev bsdmainutils software-properties-common \
+	sudo libboost-all-dev libminiupnpc-dev libdb4.8-dev libdb4.8++-dev &>> ${SCRIPT_LOGFILE}
 	echo "Install done..."
 }
 
