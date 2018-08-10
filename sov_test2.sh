@@ -31,7 +31,7 @@ function install_packages() {
 	echo "Install packages..."
 	sudo add-apt-repository -yu ppa:bitcoin/bitcoin  &>> ${SCRIPT_LOGFILE}
 	sudo apt-get -y update &>> ${SCRIPT_LOGFILE}
-	sudo apt-get install libzmq3-dev &>> ${SCRIPT_LOGFILE}
+	sudo apt-get -y install libzmq3-dev &>> ${SCRIPT_LOGFILE}
   	sudo apt-get install p7zip-full &>> ${SCRIPT_LOGFILE}
 	sudo apt-get -y install wget make automake autoconf build-essential libtool autotools-dev \
 	sudo git nano python-virtualenv pwgen virtualenv \
