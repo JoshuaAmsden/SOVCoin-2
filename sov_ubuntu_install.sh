@@ -34,9 +34,9 @@ function install_packages() {
 	sudo apt-get -y install libzmq3-dev &>> ${SCRIPT_LOGFILE}
   	sudo apt-get install p7zip-full &>> ${SCRIPT_LOGFILE}
 	sudo apt-get -y install wget make automake autoconf build-essential libtool autotools-dev \
-	sudo git nano python-virtualenv pwgen virtualenv \
-	sudo pkg-config libssl-dev libevent-dev bsdmainutils software-properties-common \
-	sudo libboost-all-dev libminiupnpc-dev libdb4.8-dev libdb4.8++-dev &>> ${SCRIPT_LOGFILE}
+	git nano python-virtualenv pwgen virtualenv \
+	pkg-config libssl-dev libevent-dev bsdmainutils software-properties-common \
+	libboost-all-dev libminiupnpc-dev libdb4.8-dev libdb4.8++-dev &>> ${SCRIPT_LOGFILE}
 	echo "Install done..."
 }
 
