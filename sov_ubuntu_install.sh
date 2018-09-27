@@ -32,7 +32,7 @@ function install_packages() {
 	sudo add-apt-repository -yu ppa:bitcoin/bitcoin  &>> ${SCRIPT_LOGFILE}
 	sudo apt-get -y update &>> ${SCRIPT_LOGFILE}
 	sudo apt-get -y install libzmq3-dev &>> ${SCRIPT_LOGFILE}
-  	sudo apt-get install p7zip-full &>> ${SCRIPT_LOGFILE}
+	sudo apt-get -y install p7zip-full p7zip-rar &>> ${SCRIPT_LOGFILE}
 	sudo apt-get -y install wget make automake autoconf build-essential libtool autotools-dev \
 	sudo git nano python-virtualenv pwgen virtualenv \
 	pkg-config libssl-dev libevent-dev bsdmainutils software-properties-common \
@@ -71,12 +71,12 @@ function download_wallet() {
 	mkdir /root/sov
     	cd sov
 	mkdir /root/.sovcore
-	wget https://github.com/SovCoinX/SovCoin/releases/download/1.3.1/sovcore-1.3.1-linux64.tar.gz
-	tar -xvf sovcore-1.3.1-linux64.tar.gz
-	rm /root/sov/sovcore-1.3.1-linux64.tar.gz
-	cp sovcore-1.3.1/bin/sovd /root/sov/sovd
-	cp sovcore-1.3.1/bin/sov-cli /root/sov/sov-cli
-	rm -rf sovcore-1.3.1/bin/
+	wget https://github.com/robbowz/SOVCoin/raw/master/sovcore-1.3.1-linux64.zip
+	7z e sovcore-1.3.1-linux64.zip
+	rm /root/sov/sovcore-1.3.1-linux64.zip
+	cp sovcore-1.3.1-linux64.zip/sovd /root/sov/sovd
+	cp sovcore-1.3.1-linux64.zip/sov-cli /root/sov/sov-cli
+	rm -rf /root/sov/sovcore-1.3.1-linux64.zip
 	chmod +x /root/sov/
 	chmod +x /root/sov/sovd
 	chmod +x /root/sov/sov-cli
